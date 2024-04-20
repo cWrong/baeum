@@ -1,20 +1,20 @@
 "use client";
 
-import { Button, Drawer } from "flowbite-react";
+import { Drawer } from "flowbite-react";
 import { useState } from "react";
 
 export default function Sidebar() {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleClose = () => setIsOpen(false);
   return (
     <section>
       <aside
         id="default-sidebar"
-        className="fixed top-0 left-0 z-40 w-18 h-screen transition-transform translate-x-0"
+        className="z-40 w-18 h-screen transition-transform translate-x-0"
         aria-label="Sidebar"
       >
-        <div className="h-full px-3 py-4 overflow-y-auto bg-gray-800">
+        <div className="h-full px-3 py-4 overflow-y-auto bg-gray-900">
           <ul className="space-y-2 font-medium">
             <li>
               <button
