@@ -3,38 +3,16 @@
 import { Button, Drawer } from "flowbite-react";
 import { useState } from "react";
 
-export default function Sidebar() {
+export default function MenuDrawer() {
   const [isOpen, setIsOpen] = useState(true);
 
   const handleClose = () => setIsOpen(false);
+
   return (
-    <section>
-      <aside
-        id="default-sidebar"
-        className="fixed top-0 left-0 z-40 w-18 h-screen transition-transform translate-x-0"
-        aria-label="Sidebar"
-      >
-        <div className="h-full px-3 py-4 overflow-y-auto bg-gray-800">
-          <ul className="space-y-2 font-medium">
-            <li>
-              <button
-                className="flex items-center p-2 rounded-lg text-white group"
-                onClick={() => setIsOpen(true)}
-              >
-                <svg
-                  className="w-5 h-5 transition duration-75 text-gray-400 group-hover:text-white"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 17 14"
-                >
-                  <path d="M16 2H1a1 1 0 0 1 0-2h15a1 1 0 1 1 0 2Zm0 6H1a1 1 0 0 1 0-2h15a1 1 0 1 1 0 2Zm0 6H1a1 1 0 0 1 0-2h15a1 1 0 0 1 0 2Z" />
-                </svg>
-              </button>
-            </li>
-          </ul>
-        </div>
-      </aside>
+    <>
+      <div className="flex min-h-[50vh] items-center justify-center">
+        <Button onClick={() => setIsOpen(true)}>Show drawer</Button>
+      </div>
       <Drawer open={isOpen} onClose={handleClose}>
         <Drawer.Header title="Drawer" />
         <Drawer.Items>
@@ -80,6 +58,6 @@ export default function Sidebar() {
           </div>
         </Drawer.Items>
       </Drawer>
-    </section>
+    </>
   );
 }
