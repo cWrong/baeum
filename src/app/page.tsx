@@ -1,9 +1,6 @@
 import Image from "next/image";
+import MenuDrawer from "@/components/MenuDrawer";
 
 export default function Home() {
-  return (
-    <main className="">
-      Hello
-    </main>
-  );
+  return <main></main>;
 }
