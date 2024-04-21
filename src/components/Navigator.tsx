@@ -1,18 +1,64 @@
 "use client";
 
-import { Drawer, Sidebar } from "flowbite-react";
+import Drawer from "@mui/material/Drawer";
 import { useState } from "react";
-import { GoDotFill } from "react-icons/go";
+import Button from "@mui/material/Button";
+import List from "@mui/material/List";
+import Divider from "@mui/material/Divider";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
+import Box from "@mui/material/Box";
 
 export default function Navigator() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
-  const handleClose = () => setIsOpen(false);
+  const toggleDrawer = (newOpen: boolean) => () => {
+    setOpen(newOpen);
+  };
+
+  const DrawerList = (
+    <Box
+      sx={{ width: 250 }}
+      role="presentation"
+      onClick={toggleDrawer(false)}
+      className="h-screen bg-gray-900 text-gray-200"
+    >
+      <List>
+        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
+          <ListItem key={text} disablePadding className="hover:bg-opacity-90">
+            <ListItemButton>
+              <ListItemIcon>
+                <FiberManualRecordIcon className="text-gray-200" />
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+      <Divider />
+      <List>
+        {["All mail", "Trash", "Spam"].map((text, index) => (
+          <ListItem key={text} disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <FiberManualRecordIcon className="text-gray-200" />
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+    </Box>
+  );
+
   return (
-    <section>
+    <section className="w-[64px]">
       <aside
         id="default-sidebar"
-        className="z-40 w-18 h-screen transition-transform translate-x-0"
+        className="z-30 w-[64px] h-screen transition-transform translate-x-0"
         aria-label="Sidebar"
       >
         <div className="h-full px-3 py-4 overflow-y-auto bg-gray-900">
@@ -20,7 +66,7 @@ export default function Navigator() {
             <li>
               <button
                 className="flex items-center p-2 rounded-lg text-white group"
-                onClick={() => setIsOpen(true)}
+                onClick={() => setOpen(true)}
               >
                 <svg
                   className="w-5 h-5 transition duration-75 text-gray-400 group-hover:text-white"
@@ -36,52 +82,8 @@ export default function Navigator() {
           </ul>
         </div>
       </aside>
-      <Drawer
-        open={isOpen}
-        onClose={handleClose}
-        className="bg-gray-900 text-gray-300"
-      >
-        <Drawer.Header
-          className="text-gray-300 [&>button]:hover:bg-opacity-10"
-          title="문제"
-          titleIcon={() => <></>}
-        />
-        <Drawer.Items>
-          <Sidebar
-            aria-label="Sidebar with multi-level dropdown example"
-            className="[&>div]:bg-transparent [&>div]:p-0 "
-          >
-            <div className="flex h-full flex-col justify-between py-2">
-              <div>
-                <Sidebar.Items>
-                  <Sidebar.ItemGroup className="flex flex-col items-start my-4">
-                    {problems["selective"].map((problem) => (
-                      <Sidebar.Item
-                        href={`problem/selective/${problem.id}`}
-                        icon={GoDotFill}
-                        className="flex justify-start w-[256px] h-[40px] hover:bg-opacity-10 text-gray-100 text-sm"
-                      >
-                        {problem.title}
-                      </Sidebar.Item>
-                    ))}
-                  </Sidebar.ItemGroup>
-                  <hr className="h-px my-4 border-0 bg-gray-700"></hr>
-                  <Sidebar.ItemGroup className="flex flex-col items-start my-4">
-                    {problems["subjective"].map((problem) => (
-                      <Sidebar.Item
-                        href={`problem/selective/${problem.id}`}
-                        icon={GoDotFill}
-                        className="flex justify-start w-[256px] h-[40px] hover:bg-opacity-10 text-gray-100 text-sm"
-                      >
-                        {problem.title}
-                      </Sidebar.Item>
-                    ))}
-                  </Sidebar.ItemGroup>
-                </Sidebar.Items>
-              </div>
-            </div>
-          </Sidebar>
-        </Drawer.Items>
+      <Drawer open={open} onClose={toggleDrawer(false)}>
+        {DrawerList}
       </Drawer>
     </section>
   );
