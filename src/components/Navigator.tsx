@@ -1,9 +1,13 @@
 "use client";
 
 import React from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+
+import { ProblemListType, getProblemList } from "@/utils/problem";
+
+import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
-import { useState } from "react";
-import Button from "@mui/material/Button";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
@@ -11,14 +15,23 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
-import Box from "@mui/material/Box";
 
 export default function Navigator() {
+  const router = useRouter();
+  
   const [open, setOpen] = useState(false);
+  const [problems, setProblems] = useState<ProblemListType>({
+    selective: [],
+    subjective: [],
+  });
 
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
   };
+
+  React.useEffect(() => {
+    (async () => setProblems(await getProblemList()))();
+  }, []);
 
   const DrawerList = (
     <Box
@@ -33,6 +46,7 @@ export default function Navigator() {
             key={problem.id}
             disablePadding
             className="hover:bg-opacity-90"
+            onClick={() => router.push(`/problem/selective/${problem.id}`)}
           >
             <ListItemButton>
               <ListItemIcon>
@@ -43,15 +57,20 @@ export default function Navigator() {
           </ListItem>
         ))}
       </List>
-      <Divider />
+      <Divider className="text-white" />
       <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem key={text} disablePadding>
+        {problems["subjective"].map((problem) => (
+          <ListItem
+            key={problem.id}
+            disablePadding
+            className="hover:bg-opacity-90"
+            onClick={() => router.push(`/problem/subjective/${problem.id}`)}
+          >
             <ListItemButton>
               <ListItemIcon>
                 <FiberManualRecordIcon className="text-gray-200" />
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary={problem.title} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -93,28 +112,3 @@ export default function Navigator() {
     </section>
   );
 }
-
-const problems = {
-  selective: [
-    { id: 1, title: "객관식 문제 1" },
-    { id: 2, title: "객관식 문제 2" },
-    { id: 3, title: "객관식 문제 3" },
-    { id: 4, title: "객관식 문제 4" },
-    { id: 5, title: "객관식 문제 5" },
-    { id: 6, title: "객관식 문제 6" },
-    { id: 7, title: "객관식 문제 7" },
-    { id: 8, title: "객관식 문제 8" },
-    { id: 9, title: "객관식 문제 9" },
-    { id: 10, title: "객관식 문제 10" },
-    { id: 11, title: "객관식 문제 11" },
-    { id: 12, title: "객관식 문제 12" },
-  ],
-  subjective: [
-    { id: 1, title: "서술형 문제 1" },
-    { id: 2, title: "서술형 문제 2" },
-    { id: 3, title: "서술형 문제 3" },
-    { id: 4, title: "서술형 문제 4" },
-    { id: 5, title: "서술형 문제 5" },
-    { id: 6, title: "서술형 문제 6" },
-  ],
-};
