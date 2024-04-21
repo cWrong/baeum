@@ -1,3 +1,4 @@
+/** @format */
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Navigator from "@/components/Navigator";
@@ -5,6 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import "./globals.css";
+import { Providers } from "./providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,7 +27,7 @@ export default function RootLayout({
         <Navigator></Navigator>
         <section className="flex flex-col w-full justify-between">
           <Header></Header>
-          {children}
+          <Providers>{children}</Providers>
           <Footer></Footer>
         </section>
         </AppRouterCacheProvider>
