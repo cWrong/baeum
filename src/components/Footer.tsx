@@ -27,7 +27,7 @@ export default function Footer() {
         <div className="w-2"></div>
         <p className="text-base">이전</p>
       </button>
-      <span className="flex items-center justify-center gap-2 w-12 font-semibold">
+      <span className="flex items-center justify-center gap-2 w-12 font-bold">
         <p>1</p>
         <p>/</p>
         <p>4</p>
