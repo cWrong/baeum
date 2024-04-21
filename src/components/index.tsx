@@ -7,8 +7,6 @@ import Header from "./Header";
 import Question from "./Question";
 import Result from "./Result";
 import Navigator from "./Navigator";
-import Sidebar from "./Sidebar";
-
 import LanguageSelector from "./LanguageSelector";
 
 export {
@@ -19,6 +17,5 @@ export {
   Question,
   Result,
   Navigator,
-  Sidebar,
   LanguageSelector,
 };
