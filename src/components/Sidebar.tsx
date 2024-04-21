@@ -1,3 +1,5 @@
+/** @format */
+
 "use client";
 
 import { Drawer } from "flowbite-react";

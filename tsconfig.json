@@ -22,6 +22,9 @@
       "@/*": ["./src/*",],
       "@/component/*": ["./src/components/*"],
       "@/component": ["./src/components/"],
+      "@/constant/*": ["./src/constant/*"],
+      "@/constant": ["./src/constant/"],
+      
       "@/contentlayer/generated": ["./.contentlayer/generated"],
       "@/contentlayer/generated/*": ["./.contentlayer/generated/*"]
     }

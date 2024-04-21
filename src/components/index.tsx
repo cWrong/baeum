@@ -1,12 +1,13 @@
 /** @format */
 
 import Answer from "./Answer";
-import Editor from "./Editor";
+import Editor from "./EditorComp";
 import Footer from "./Footer";
 import Header from "./Header";
 import Question from "./Question";
 import Result from "./Result";
 import Sidebar from "./Sidebar";
+import LanguageSelector from "./LanguageSelector";
 
 export {
   Answer,
@@ -16,4 +17,5 @@ export {
   Question,
   Result,
   Sidebar,
+  LanguageSelector,
 };
