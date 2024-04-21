@@ -6,14 +6,6 @@ import Footer from "./Footer";
 import Header from "./Header";
 import Question from "./Question";
 import Result from "./Result";
-import Sidebar from "./Sidebar";
+import Navigator from "./Navigator";
 
-export {
-  Answer,
-  Editor,
-  Footer,
-  Header,
-  Question,
-  Result,
-  Sidebar,
-};
+export { Answer, Editor, Footer, Header, Question, Result, Navigator };
