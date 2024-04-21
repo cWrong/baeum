@@ -25,16 +25,20 @@ export default function Navigator() {
       sx={{ width: 250 }}
       role="presentation"
       onClick={toggleDrawer(false)}
-      className="h-screen bg-gray-900 text-gray-200"
+      className="h-full bg-gray-900 text-gray-200"
     >
       <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem key={text} disablePadding className="hover:bg-opacity-90">
+        {problems["selective"].map((problem) => (
+          <ListItem
+            key={problem.id}
+            disablePadding
+            className="hover:bg-opacity-90"
+          >
             <ListItemButton>
               <ListItemIcon>
                 <FiberManualRecordIcon className="text-gray-200" />
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary={problem.title} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -56,10 +60,10 @@ export default function Navigator() {
   );
 
   return (
-    <section className="w-[64px]">
+    <section className="w-[60px]">
       <aside
         id="default-sidebar"
-        className="z-30 w-[64px] h-screen transition-transform translate-x-0"
+        className="z-30 w-[60px] h-screen transition-transform translate-x-0"
         aria-label="Sidebar"
       >
         <div className="h-full px-3 py-4 overflow-y-auto bg-gray-900">
@@ -98,22 +102,12 @@ const problems = {
     { id: 4, title: "객관식 문제 4" },
     { id: 5, title: "객관식 문제 5" },
     { id: 6, title: "객관식 문제 6" },
-    { id: 6, title: "객관식 문제 6" },
-    { id: 6, title: "객관식 문제 6" },
-    { id: 6, title: "객관식 문제 6" },
-    { id: 6, title: "객관식 문제 6" },
-    { id: 6, title: "객관식 문제 6" },
-    { id: 6, title: "객관식 문제 6" },
-    { id: 6, title: "객관식 문제 6" },
-    { id: 6, title: "객관식 문제 6" },
-    { id: 6, title: "객관식 문제 6" },
-    { id: 6, title: "객관식 문제 6" },
-    { id: 6, title: "객관식 문제 6" },
-    { id: 6, title: "객관식 문제 6" },
-    { id: 6, title: "객관식 문제 6" },
-    { id: 6, title: "객관식 문제 6" },
-    { id: 6, title: "객관식 문제 6" },
-    { id: 6, title: "객관식 문제 6" },
+    { id: 7, title: "객관식 문제 7" },
+    { id: 8, title: "객관식 문제 8" },
+    { id: 9, title: "객관식 문제 9" },
+    { id: 10, title: "객관식 문제 10" },
+    { id: 11, title: "객관식 문제 11" },
+    { id: 12, title: "객관식 문제 12" },
   ],
   subjective: [
     { id: 1, title: "서술형 문제 1" },
