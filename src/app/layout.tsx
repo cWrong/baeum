@@ -1,4 +1,5 @@
 /** @format */
+import React from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Navigator from "@/components/Navigator";
@@ -23,13 +24,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} flex w-screen h-screen bg-blue-950`}>
-      <AppRouterCacheProvider>
-        <Navigator></Navigator>
-        <section className="flex flex-col w-full justify-between">
-          <Header></Header>
-          <Providers>{children}</Providers>
-          <Footer></Footer>
-        </section>
+        <AppRouterCacheProvider>
+          <Navigator></Navigator>
+          <section className="flex flex-col w-full justify-between">
+            <Header></Header>
+            <Providers>{children}</Providers>
+            <Footer></Footer>
+          </section>
         </AppRouterCacheProvider>
       </body>
     </html>

@@ -19,17 +19,22 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*",],
-      "@/component/*": ["./src/components/*"],
-      "@/component": ["./src/components/"],
+      "@/*": ["./src/*"],
+      "@/components/*": ["./src/components/*"],
+      "@/components": ["./src/components/"],
       "@/constant/*": ["./src/constant/*"],
       "@/constant": ["./src/constant/"],
-      
+
       "@/contentlayer/generated": ["./.contentlayer/generated"],
       "@/contentlayer/generated/*": ["./.contentlayer/generated/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "./.contentlayer/generated"
-],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "./.contentlayer/generated"
+  ],
   "exclude": ["node_modules"]
 }
