@@ -6,43 +6,13 @@ import { allPosts } from "@/contentlayer/generated";
 import type { Post } from "@/contentlayer/generated";
 import { Question, Editor, Result, Select } from "@/components";
 import React from "react"; // React import
+import {getProblem, ProblemSearchType, QuestionType} from "@/utils/problem"
 import { Card, Skeleton } from "@nextui-org/react";
-
-type ProblemSearchType = {
-  id: string;
-  type: string;
-};
-
-// mock data
-type question = {
-  question: string;
-  options: string[];
-};
-const questions: question[] = [
-  {
-    question: "selective_1",
-    options: ["이현서", "심준용", "박상욱", "윤상우", "구본규"],
-  },
-];
-
-async function getProblem({ id, type }: ProblemSearchType) {
-  const mdx_filename = `${type}/${id}`;
-  const post: Post | undefined = allPosts.find(
-    (post) => post._raw.flattenedPath === mdx_filename
-  );
-
-  const question: question | undefined = questions.find(
-    ({ question }) => question == `${type}_${id}`
-  );
-
-  console.log("question: ", question);
-  return { post, question };
-}
 
 const ProblemDetailPage = ({ params }: { params: ProblemSearchType }) => {
   const [post, setPost] = React.useState<Post | undefined>();
   const [question, setQuestion] = React.useState<
-    question | undefined
+  QuestionType | undefined
   >();
 
   const [output, setOutput] = React.useState<string>("");

@@ -1,6 +1,11 @@
 import { allPosts } from "@/contentlayer/generated";
 import type { Post } from "@/contentlayer/generated";
 
+export type QuestionType = {
+  question: string;
+  options: string[];
+};
+
 export type ProblemSearchType = {
   id: string;
   type: string;
@@ -17,12 +22,25 @@ export type ProblemListType = {
   subjective: ProblemMetadataType[];
 };
 
+// mock data
+export const questions: QuestionType[] = [
+  {
+    question: "selective_1",
+    options: ["이현서", "심준용", "박상욱", "윤상우", "구본규"],
+  },
+];
+
 export async function getProblem({ id, type }: ProblemSearchType) {
   const mdx_filename = `${type}/${id}`;
   const post: Post | undefined = allPosts.find(
     (post) => post._raw.flattenedPath === mdx_filename
   );
-  return post;
+
+  const question: QuestionType | undefined = questions.find(
+    ({ question }) => question == `${type}_${id}`
+  );
+
+  return { post, question };
 }
 
 export async function getProblemList(): Promise<ProblemListType> {
