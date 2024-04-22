@@ -39,11 +39,7 @@ async function getProblem({ id, type }: ProblemSearchType) {
   return { post, question };
 }
 
-const ProblemDetailPage = ({
-  params,
-}: {
-  params: ProblemSearchType;
-}) => {
+const ProblemDetailPage = ({ params }: { params: ProblemSearchType }) => {
   const [post, setPost] = React.useState<Post | undefined>();
   const [question, setQuestion] = React.useState<
     question | undefined
