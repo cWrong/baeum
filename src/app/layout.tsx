@@ -1,4 +1,5 @@
 /** @format */
+
 import React from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -8,6 +9,9 @@ import Footer from "@/components/Footer";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import "./globals.css";
 import { Providers } from "./providers";
+import StyleProvider from "@/components/Providers/StyleProvider";
+import GlobalStyle from "@/styles/GlobalStyle";
+import { NextUIProvider } from "@nextui-org/system";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,15 +27,26 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} flex w-screen h-screen bg-blue-950`}>
-        <AppRouterCacheProvider>
-          <Navigator></Navigator>
-          <section className="flex flex-col w-full justify-between">
-            <Header></Header>
-            <Providers>{children}</Providers>
-            <Footer></Footer>
-          </section>
-        </AppRouterCacheProvider>
+      <body
+        className={`${inter.className} flex w-screen max-w-[100vw] h-screen max-h-[100vh] bg-blue`}
+      >
+        <NextUIProvider>
+          <AppRouterCacheProvider>
+            <div className="flex flex-row w-screen h-screen">
+              <Navigator></Navigator>
+              <section className="flex flex-col justify-between w-full">
+                <Header></Header>
+                <div className="grow h-4/5 ">
+                  <Providers>
+                    <StyleProvider>{children}</StyleProvider>
+                    <GlobalStyle />
+                  </Providers>
+                </div>
+                <Footer></Footer>
+              </section>
+            </div>
+          </AppRouterCacheProvider>
+        </NextUIProvider>
       </body>
     </html>
   );

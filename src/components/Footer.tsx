@@ -8,7 +8,13 @@ export default function Footer() {
   const [currentPage, setCurrentPage] = useState(1);
   const onPageChange = (page: number) => setCurrentPage(page);
   return (
-    <section className="flex items-center justify-center gap-4 h-[60px] bg-gray-800 text-white">
+    <section
+      className="flex items-center justify-center gap-4 h-[60px] bg-gray-800 text-white"
+      style={{
+        borderTop: "1px solid #ccc", // 오른쪽 테두리 적용
+        backgroundColor: "#1f2e3d", // 배경색
+      }}
+    >
       <button className="flex items-center justify-center p-2 rounded-md bg-transparent border-transparent hover:bg-gray-100 hover:bg-opacity-10 active:border-0">
         <svg
           className="w-6 h-6 text-white"

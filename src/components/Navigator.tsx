@@ -1,3 +1,5 @@
+/** @format */
+
 "use client";
 
 import React from "react";
@@ -28,16 +30,22 @@ export default function Navigator() {
       className="h-screen bg-gray-900 text-gray-200"
     >
       <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem key={text} disablePadding className="hover:bg-opacity-90">
-            <ListItemButton>
-              <ListItemIcon>
-                <FiberManualRecordIcon className="text-gray-200" />
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+        {["Inbox", "Starred", "Send email", "Drafts"].map(
+          (text, index) => (
+            <ListItem
+              key={text}
+              disablePadding
+              className="hover:bg-opacity-90"
+            >
+              <ListItemButton>
+                <ListItemIcon>
+                  <FiberManualRecordIcon className="text-gray-200" />
+                </ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItemButton>
+            </ListItem>
+          )
+        )}
       </List>
       <Divider />
       <List>
@@ -61,6 +69,10 @@ export default function Navigator() {
         id="default-sidebar"
         className="z-30 w-[64px] h-screen transition-transform translate-x-0"
         aria-label="Sidebar"
+        style={{
+          borderRight: "1px solid #ccc", // 오른쪽 테두리 적용
+          backgroundColor: "#1f2e3d", // 배경색
+        }}
       >
         <div className="h-full px-3 py-4 overflow-y-auto bg-gray-900">
           <ul className="space-y-2 font-medium">

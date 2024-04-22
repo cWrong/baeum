@@ -6,7 +6,7 @@ import { useRef, useState } from "react";
 import Editor from "@monaco-editor/react"; // 가정한 에디터 컴포넌트 임포트
 import { Box, HStack } from "@chakra-ui/react";
 import { CODE_SNIPPETS } from "@/constant/constant";
-import { LanguageSelector } from "@/components";
+import { LanguageSelector, Result } from "@/components";
 
 export default function EditorComp() {
   const editorRef = useRef();
@@ -25,7 +25,7 @@ export default function EditorComp() {
 
   return (
     <Box>
-      <HStack spacing={4}>
+      <div className="col-span-3 flex flex-col h-full mr-8 ml-4 space-y-4">
         <Box w="100%">
           <LanguageSelector
             language={language}
@@ -37,7 +37,7 @@ export default function EditorComp() {
                 enabled: false,
               },
             }}
-            height="65vh"
+            height="55vh"
             theme="vs-dark"
             language={language}
             defaultValue={CODE_SNIPPETS[language]}
@@ -46,8 +46,8 @@ export default function EditorComp() {
             onChange={(value) => setValue(value)}
           />
         </Box>
-        {/* <Output editorRef={editorRef} language={language} /> */}
-      </HStack>
+        <Result editorRef={editorRef} language={language} />
+      </div>
     </Box>
   );
 }

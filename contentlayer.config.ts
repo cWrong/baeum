@@ -52,7 +52,14 @@ const contentSource = makeSource({
   documentTypes: [Post],
   mdx: {
     remarkPlugins: [remarkGfm],
-    rehypePlugins: [[rehypePrettyCode, rehypeOptions]],
+    rehypePlugins: [
+      [
+        rehypePrettyCode,
+        rehypeOptions,
+        rehypeHighlight,
+        rehypeAccessibleEmojis,
+      ],
+    ],
   },
 });
 
