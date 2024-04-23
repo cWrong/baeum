@@ -20,7 +20,7 @@ import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 
 export default function Navigator() {
   const router = useRouter();
-  
+
   const [open, setOpen] = useState(false);
   const [problems, setProblems] = useState<ProblemListType>({
     selective: [],
@@ -58,22 +58,6 @@ export default function Navigator() {
             </ListItemButton>
           </ListItem>
         ))}
-        {["Inbox", "Starred", "Send email", "Drafts"].map(
-          (text, index) => (
-            <ListItem
-              key={text}
-              disablePadding
-              className="hover:bg-opacity-90"
-            >
-              <ListItemButton>
-                <ListItemIcon>
-                  <FiberManualRecordIcon className="text-gray-200" />
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          )
-        )}
       </List>
       <Divider className="text-white" />
       <List>
