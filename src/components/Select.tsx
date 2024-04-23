@@ -2,7 +2,7 @@
 //@ts-nocheck
 import { useState, useEffect } from "react";
 import { Box } from "@chakra-ui/react";
-import { RadioGroup, Radio } from "@nextui-org/react";
+import { RadioGroup } from "@headlessui/react";
 
 function shuffleArray(originalArray) {
   const array = [...originalArray];
@@ -31,7 +31,7 @@ export default function Select({ question: { options } }) {
       className="col-span-3 flex flex-col h-full mr-8 ml-4 space-y-4 items-center justify-center"
     >
       <div className="w-full px-4 py-16">
-        <div className="mx-auto w-full max-w-md">
+        <div className="mx-auto w-full max-w-md text-black">
           <RadioGroup value={opt} onChange={setOpt}>
             <RadioGroup.Label className="sr-only">
               Server size
@@ -65,7 +65,7 @@ export default function Select({ question: { options } }) {
                               className={`font-medium  ${
                                 checked
                                   ? "text-white"
-                                  : "text-gray-900"
+                                  : "text-blue-dark"
                               }`}
                             >
                               {opt}
